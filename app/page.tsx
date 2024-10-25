@@ -13,6 +13,11 @@ export default function Home() {
     }
   };
 
+  const removeTask = (index: number) => {
+    const newTasks = tasks.filter((_, i) => i !== index);
+    setTasks(newTasks);
+  };
+
   return (
     <div style={{ padding: "20px" }}>
       <h1>To-Do List</h1>
@@ -27,7 +32,10 @@ export default function Home() {
       </div>
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
+          <li key={index}>
+            {task}
+            <button onClick={() => removeTask(index)}>Delete</button> {/* 削除ボタン */}
+          </li>
         ))}
       </ul>
     </div>
